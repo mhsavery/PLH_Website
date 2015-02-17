@@ -1,0 +1,73 @@
+.nav a {
+    color: #5a5a5a;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 14px 10px;
+    text-transform: uppercase;
+}
+
+.nav li {
+    display: inline;
+}
+
+.page-header {
+    background-image:url('http://wallpoper.com/images/00/25/59/08/deadlift-bar_00255908.jpg');
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page-header h1 {
+    color: #fff;
+    font-size: 48px;  
+    font-family: 'Shift', sans-serif;
+    font-weight: bold;
+}
+
+.page-header p {
+    font-size: 20px;
+    color: #fff;
+}
+
+.learn-more {
+    background-color: #f7f7f7;
+}
+
+.learn-more h3 {
+    font-family: 'Shift', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.learn-more a {
+    color: #00b0ff;
+}
+
+.textbox {
+    width:100px;
+    height:18px;
+}
+
+.nav-login {
+    color: #5a5a5a;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 14px 10px;
+    text-transform: uppercase;
+}
+
+.button {
+    border: 1px solid #006;
+    background: #E0E0E0;
+    margin: 1px 1px 1px 1px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.navbar-bottom {
+    min-height: 100px;
+    margin-top: 100px;
+    background-color: #28364f;
+    padding-top: 35px;
+    color:#FFFFFF;
+}
