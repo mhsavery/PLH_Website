@@ -1,16 +1,17 @@
 $(document).ready(function () {
     $("#bodyweight").focus();
-});
 
-$(".submits").keyup(function (enter) {
-    if (enter.keyCode == 13) {
+    $(".submits").keyup(function (enter) {
+        if (enter.keyCode == 13) {
+            wilks();
+        }
+    });
+
+    $("#findValue").click(function (enter) {
+        enter.preventDefault();
         wilks();
-    }
-});
+    });
 
-$("#findValue").click(function (enter) {
-    enter.preventDefault();
-    wilks();
 });
 
 function wilks(){
@@ -18,7 +19,7 @@ function wilks(){
         var gen = $('input[name="gender"]:checked').val();
 
         //Get value of unit of measurement input
-        var unit = $('input[name="unit"=]:checked').val();
+        var unit = $('input[name="unit"]:checked').val();
 
         //Get bodyweight value
         var bWeight = $('#bodyweight').val();
@@ -40,8 +41,7 @@ function wilks(){
             e=7.01863E-06;
             f=-1.291E-08;
 
-        } else 
-        if(gen == 2){  
+        } else if(gen == 2){  
 
             //Coefficients for women
             a=594.31747775582;
