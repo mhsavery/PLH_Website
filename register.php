@@ -1,43 +1,86 @@
+<!DOCTYPE html>
 <html>
 
-  <head>
-    
-    <!-- Latest compiled and minified CSS -->
+<head>
+
+    <title> Powerlifting Hub </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="main.css">
     
-  </head>
+    <script>
+		$('#sidebar').affix({
+      		offset: {
+        		top: 240
+      		}
+		}); 
+	</script>
+	
+</head>
 
-  <body>
-    <div class="nav">
-      <div class="container">
-        <ul class="pull-left">
-          <li><a href="http://localhost:8888/PowerliftingHub/index.html">Home</a></li>
-          <li><a href="#">Browse</a></li>
-        </ul>
-        <ul class="pull-right">
-          <li ><a href="#">Sign Up</a></li>
-          <li><a href="http://localhost:8888/PowerliftingHub/login.php">Log In</a></li>
-          <li><a href="#">Help</a></li>
-        </ul>
-      </div>
-    </div>
+<body>
 
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Powerlifting Hub</h1>
-        <p>Built by powerlifters, for powerlifters.</p>
-        <a href="#">Who are we?</a>
-      </div>
-    </div> 
 
-<?php	require('connect.php');
+    <div align="center">
+		<?php 	require_once 'connect.php';
+				if (isset($_POST['submit'])){
+				    $username = $_POST['username'];
+				    $password = $_POST['password'];
+				    $sql = "SELECT * FROM `user` WHERE username='$username' and password='$password' and active=1";
+				    $result = mysql_query($sql) or die(mysql_error());
+				    $count = mysql_num_rows($result);
+				if ($count == 1){
+					echo "You are logged in";
+				} 
+				else {
+					echo "Login Failed";
+				}
+		} ?>
+	</div>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header"> 
+                <a class="navbar-brand" href="#">PLH</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Forums</a></li>
+                    <li><a href="#">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Features <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Wilks Calculator</a></li>
+                            <li><a href="#">Program Tracker</a></li>
+                            <li><a href="#">Find Your Macros</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+          
+                <ul class="nav navbar-nav navbar-right">
+                    <form action="" method="POST">
+                        <li><span class="nav-login">Username: <input type="text" class="textbox" id="username" name="username" placeholder="username"/></span>
+                        <li><span class="nav-login">Password: <input type="password" class="textbox" id="password" name="password" placeholder="password"/></span>
+                        <li><input type="submit" name="submit" class="button" value="Login" />
+                        <li><a href="http://localhost:8888/PowerliftingHub/register.php" size="8px">Sign Up</a></li>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<?php	require('connect.php');
 		// If the values are posted, insert them into the database.
 		$password = $_POST['password'];
 		$cpassword = $_POST['cpassword'];
@@ -64,7 +107,7 @@
 			echo $msg;
 		}
 		}
-?>
+	?>
 
   	<div class="register-form" align="center">
 		<h1>Register</h1>
@@ -87,32 +130,28 @@
 			</form>
 	</div>
 
-<div class="learn-more">
-	  <div class="container">
-		<div class="row">
-	      <div class="col-md-4">
-			<h3>Wilks Calculator</h3>
-			<p>Want to keep track of your Wilks strength? Our calculator will store your 
-			past Wilks values and display your progress over time.</p>
-			<p><a href="#">Find you Wilks value.</a></p>
-	      </div>
-		  <div class="col-md-4">
-			<h3>Leaderboards</h3>
-			<p>See how your numbers stack up against other members. Sort by weight class 
-			and Wilks values to get a more accurate portrayal of your performance.</p>
-			<p><a href="#">The leaderboards.</a></p>
-		  </div>
-		  <div class="col-md-4">
-			<h3>Programming Spreadsheets</h3>
-			<p>Choose from your favorite training programs. StrongLifts, Sheiko, Candito, 
-			Madcow.  We'll compile as many as we can and allow you to input your stats 
-			directly into the webpage. No more copying your programs over from Excel to a 
-			fitness app on your phone.  Just visit our page on any device and your program 
-			will be stored.</p>
-			<p><a href="#">View training regimens.</a></p>
-		  </div>
-	    </div>
-	  </div>
-	</div>
-  </body>
+
+
+<nav class="navbar navbar-inverse navbar-bottom" style="padding:0 0 80px 0" id="bottomNavbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5 id='footer-header'> SITEMAP </h3>
+                    <div class="col-sm-4" style="padding: 0 0 0 0px">
+                        <p>News</p>
+                        <p>contact</p>
+                    </div>
+                    <div class="col-sm-4" style="padding: 0 0 0 0px">
+                        <p>FAQ</p>
+                        <p>Privacy Policy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+</body>
+
 </html>
